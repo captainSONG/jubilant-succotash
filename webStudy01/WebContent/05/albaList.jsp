@@ -24,7 +24,7 @@
 	</thead>
 	<tbody>
 		<%
-			//수정요망
+			//수정요망 sun of the beach
 			Map<String, AlbasengVO> alba = (Map<String, AlbasengVO>)getServletContext().getAttribute(""); 
 			for(Entry<String, AlbasengVO> entry : SimpleFormProcessServlet.albasengs.entrySet()){
 				%>
