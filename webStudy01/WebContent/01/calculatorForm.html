@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script type="text/javascript">
+	$(function() {
+		//= 실행했을 경우 action의 적혀있는 부분과 web.xml에 등록과 매핑이 된 calculateservlet.java 파일이 실행되는데 비동기 방식인 
+		// ajax를 이용한다.
+		//결과를 출력해주기 위해 먼저 id값이 result인 div 영역을 선언해준다.  
+		var resultArea = $("#result");
+		//id가 calForm인 form의 submit를 눌렀을때 실행되는 부분을 작성해준다.
+		$("#calForm").on("submit", function(event) {
+			//submit를 재정의 하기 위해 preventDefault를 사용해서 이벤트를 방지한다. 
+			event.preventDefault();
+			//주소와 메서드, 데이터를 현재 form의 정의 되있는것을 담아준다.
+			var url = $(this).attr("action");
+			var method = $(this).attr("method");
+			var data = $(this).serialize();
+			//alert(data);			
+			$.ajax({				
+				url : url,
+				method : method,
+				data : data,
+				dataType : "json", // request header : accept 결정. / html(text/html), json(application/json), text(text/plain), xml(application/xml)
+				success : function(resp) {
+				//값이 잘 수신되었을때 resultArea에 결과값을 적어준다.  
+					resultArea.html(resp.result);
+				},
+				error : function(resp) {
+					//오류가 실행되었을때 어떤 오류인지 출력해준다.
+					alert(resp.responseTxt);					
+				}
+			});
+			return false;
+		});
+	});
+
+</script>
+</head>
+<body>
+사칙연산을 위해 좌항 피연산자, 연산자, 우항 피연산자 입력.
+<!-- 두개의 수와 연산자를 받기위해서 input태그를 이용하며 = 사용하여 값을 서버에 전달해주기위해 form 태그를 사용했으며
+	post 방식을 이용한다. 결과는 div 태그에 출력해준다. -->
+<form id="calForm" action="http://localhost/webStudy01/calculate" method="post">
+	좌항피연산자 : <input type="number" name="leftOp">
+	연산자
+	<input type="radio" name="operator" value="add"/>+
+	<input type="radio" name="operator" value="minus"/>-
+	<input type="radio" name="operator" value="multiply"/>*
+	<input type="radio" name="operator" value="divide"/>/
+	우항피연산자 : <input type="number" name="rightOp">
+	<input type="submit" value="="/>
+</form>
+<div id="result"></div>
+</body>
+</html>
