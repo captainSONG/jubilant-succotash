@@ -24,6 +24,8 @@
 	</thead>
 	<tbody>
 		<%
+			//수정요망
+			Map<String, AlbasengVO> alba = (Map<String, AlbasengVO>)getServletContext().getAttribute(""); 
 			for(Entry<String, AlbasengVO> entry : SimpleFormProcessServlet.albasengs.entrySet()){
 				%>
 				<tr>
