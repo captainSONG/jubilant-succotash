@@ -17,7 +17,7 @@
 	application(ServletContext) : 컨텍스트(어플리케이션)와 서버에 대한 정보를 가진 객체
 	<%=application.hashCode() %>
 	config(ServletConfig) : 서블릿 등록과 관련된 정보를 가진 객체
-	page(Object) : 현재 JSP 페이지에 대한 레퍼런스
+	page(Object)(==>this) : 현재 JSP 페이지에 대한 레퍼런스
 	exception(Throwable) : 발생한 예외에 대한 정보를 가진 객체
 			: 예외(에러)가 발생한 경우, 에러를 처리하는 페이지에서 사용됨.
 			(page 지시자의 isErrorPage로 활성화 함.)

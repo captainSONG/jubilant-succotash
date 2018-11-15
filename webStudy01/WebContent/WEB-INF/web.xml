@@ -57,8 +57,16 @@
   </servlet-mapping>
  
   <session-config>
-  	<session-timeout>4</session-timeout>
-  	
+  	<session-timeout>4</session-timeout>  	
   </session-config>
+  
+<!--   <jsp-config>
+  	<jsp-property-group>
+  		<url-pattern>/07/*</url-pattern>
+  		<include-prelude>
+  			/includee/codeFragment.jsp
+  		</include-prelude>
+  	</jsp-property-group>
+  </jsp-config> -->
   
 </web-app>

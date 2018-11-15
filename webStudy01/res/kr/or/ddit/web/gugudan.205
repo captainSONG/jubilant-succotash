@@ -1,20 +1,13 @@
-<html>
-	<head>
-		<style type="text/css">
-			table{
-				border-collaps:collaps;
-				background-color:lightgreen;
-			}
-			td{
-				border: 1px solid black;
-			}
-		</style>
-	</head>
-	
-	<body>
-		<table>			
-			@gugudan
-		</table>
-	</body>
+<style type="text/css">
+	table{
+		border-collaps:collaps;
+		background-color:lightgreen;
+	}
+	td{
+		border: 1px solid black;
+	}
+</style>
 
-</html>
+<table>			
+	@gugudan
+</table>

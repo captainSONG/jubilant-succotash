@@ -4,11 +4,7 @@
 <%@page import="static java.util.Calendar.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>04/calendar.jsp</title>
+
 <style type="text/css">
 	.sunday{
 		background-color: red;
@@ -27,7 +23,7 @@
 </style>
 <script type="text/javascript">
 	function eventHandler(year, month) {
-		var form = document.forms[0];
+		var form = document.calForm;
 		if((year && month) || month==0 ){
 			form.year.value = year;			
 			form.month.value = month;
@@ -36,8 +32,6 @@
 		return false;
 	}
 </script>
-</head>
-<body>
 
 <%
 	//name과 매칭되는 요청의 파라미터값들을 받는다.
@@ -78,7 +72,8 @@
 	int nextMonth = cal.get(MONTH);
 	Locale[] locales = Locale.getAvailableLocales();	
 %>
-<form action="">
+<form name="calForm" action="" method="post">
+<input type="hidden" name="command" value="calendar">
 	<h4>
 		<%-- 전의 달을 가져오기 위해서 전 년도와 전월을 받아 이벤트가 발생 --%>
 		<a href="javascript:eventHandler(<%= beforeYear%>,<%= beforeMonth%>)">&lt;-</a>
@@ -158,5 +153,3 @@
 %>
 </tbody>
 </table>
-</body>
-</html>
