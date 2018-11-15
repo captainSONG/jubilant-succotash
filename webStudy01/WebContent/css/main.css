@@ -1,0 +1,35 @@
+@charset "UTF-8";
+#top{
+	width: 100%;
+	height: 70px;
+	background-color: lime;
+}
+
+#top>ul, #footer>ul{
+	list-style: none;
+}
+
+#top li, #footer li{
+	float: left;
+	padding-left: 50px;
+	margin-right: 20px;
+	padding-top: 20px;
+}
+
+#left{
+	width: 18%;
+	height: 500px;
+	float: left;
+	background-color: deeppink;	
+}
+#body{
+	width: 80%;
+	height: 500px;
+	float: right;
+}
+#footer{
+	width: 100%;
+	height: 70px;
+	float: left;
+	background-color: aqua;
+}
