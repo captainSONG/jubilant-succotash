@@ -5,7 +5,7 @@ public enum ServiceType {
 	GUGUDANPROCESS("/gugudan.do"),
 	LYRICS("/02/musicForm.jsp"),
 	CALENDAR("/04/calendar.jsp"),
-	IMAGE("/imageForm");
+	IMAGE("/imagesForm");
 	
 	private String servicePage;
 

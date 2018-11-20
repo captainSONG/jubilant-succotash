@@ -1,10 +1,12 @@
-<%@page import="kr.or.ddit.web.modulize.ServiceType"%>
+<%@page import="kr.or.ddit.vo.MemberVO"%>
 <%@page import="java.util.Objects"%>
+<%@page import="kr.or.ddit.web.modulize.ServiceType"%>
+<%-- <%@page import="kr.or.ddit.web.useragent.??"%> --%>
 <%@page import="org.apache.commons.lang3.StringUtils"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-	String mem = (String)session.getAttribute("authMember");
+	MemberVO authMember = (MemberVO)session.getAttribute("authMember");
 	String cmdParam = request.getParameter("command");
 	int statusCode = 0;
 	String includePage = null;
@@ -18,7 +20,7 @@
 	}
 	if(statusCode != 0){
 		response.sendError(statusCode);
-		return;
+		//return;
 	}
 %>
 <!DOCTYPE html>
@@ -51,9 +53,9 @@
 			로그인에 성공해서 웰컴 페이지로 접속하는 경우의 수가 있음.
 			
 			<%
-				if(StringUtils.isNotBlank(mem)){
+				if(authMember != null){
 					%>
-						<%=mem %>님 로그인 상태, <a href="<%=request.getContextPath() %>/login/logout.jsp">로그아웃</a>				
+						<%=authMember.getMem_name() %>님 로그인 상태, <a href="<%=request.getContextPath() %>/login/logout.jsp">로그아웃</a>				
 					<%
 				}else{
 					%>

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <script type="text/javascript">
-	function goIndex(command) {
+	function goIndex(command){
 		var form = document.leftForm;
 		form.command.value = command;
 		form.submit();
@@ -14,5 +14,5 @@
 	<li><a href="javascript:goIndex('image');">이미지뷰어</a></li>
 </ul>
 <form name="leftForm" action="<%=request.getContextPath() %>/" method="post">
-	<input name="command" value="" type="hidden">
+	<input name="command" value="" type="hidden"/>
 </form>

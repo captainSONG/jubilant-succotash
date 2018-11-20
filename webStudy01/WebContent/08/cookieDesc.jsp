@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.utils.CookieUtil"%>
 <%@page import="java.net.URLDecoder"%>
 <%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -15,9 +16,10 @@
 	1. 쿠키 객체 생성(쿠키명/쿠키값)
 	2. 생성된 쿠키를 클라이언트쪽으로 전송
 	<%
-		String cookieValue = URLEncoder.encode("한글 쿠키값", "UTF-8");
-		out.println(cookieValue);
-		Cookie cookie = new Cookie("koreanCookie", cookieValue);
+		//String cookieValue = URLEncoder.encode("한글 쿠키값", "UTF-8");
+		//out.println(cookieValue);
+		//Cookie cookie = new Cookie("koreanCookie", cookieValue);
+		Cookie cookie = CookieUtil.createCookie("koreanCookie", "한글 쿠키값");
 		response.addCookie(cookie);
 	%>
 	3. 브라우저가 자기 쿠키저장소에 응답이 실려있는 쿠키를 저장.
@@ -26,6 +28,7 @@
 	
 	5. 전송된 쿠키를 통해 상태 복원
 	<%
+		/* 
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null){
 			for(Cookie tmp : cookies){
@@ -33,7 +36,9 @@
 					out.println(URLDecoder.decode(tmp.getValue(), "UTF-8"));
 				}
 			}			
-		}
+		 }
+		 */
+		 out.println(new CookieUtil(request).getCookieValue("koreanCookie"));
 	%>
 	
 </pre>
